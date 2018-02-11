@@ -89,6 +89,7 @@
                     Command="{Binding LoginCommand}"
                     FontAttributes="Bold"
                     HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     Margin="20,0"
                     Text="Login"
                     TextColor="White">                    
@@ -99,6 +100,7 @@
                     Command="{Binding RegisterCommand}"
                     FontAttributes="Bold"
                     HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     Margin="20,0"
                     Text="Register"
                     TextColor="White">                    
