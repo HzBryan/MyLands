@@ -1,9 +1,12 @@
 ﻿namespace MyLands.ViewModels
 {
+<<<<<<< HEAD
     using GalaSoft.MvvmLight.Command;
+=======
+>>>>>>> parent of 9481d84... Login Validation
     using System.Windows.Input;
-    using Xamarin.Forms;
 
+<<<<<<< HEAD
     public class LoginViewModel : BaseViewModel
     {
 
@@ -14,6 +17,11 @@
         private bool isEnabled;
         #endregion
 
+=======
+    public class LoginViewModel
+    {
+
+>>>>>>> parent of 9481d84... Login Validation
         #region Properties
         //Inicialmente teniamos implementada la interfaz INotifyPropertyChanged aqui, pero para optimizar
         //el codigo, creamos la BaseViewModel y heredamos la interfaz de ahi y hacemos la referencia propia
@@ -26,14 +34,24 @@
 
         public string Password
         {
+<<<<<<< HEAD
             get { return this.password; }
             set { this.SetValue(ref this.password, value); }
+=======
+            get;
+            set;
+>>>>>>> parent of 9481d84... Login Validation
         }
 
         public bool IsRunning
         {
+<<<<<<< HEAD
             get { return this.isRunning; }
             set { this.SetValue(ref this.isRunning, value); }
+=======
+            get;
+            set;
+>>>>>>> parent of 9481d84... Login Validation
         }
 
         public bool IsRemembered
@@ -41,81 +59,39 @@
             get;
             set;
         }
+<<<<<<< HEAD
 
         public bool IsEnabled
         {
             get { return this.isEnabled; }
             set { this.SetValue(ref this.isEnabled, value); }
         }
+=======
+>>>>>>> parent of 9481d84... Login Validation
         #endregion
 
         #region Constructors
         public LoginViewModel()
         {
             this.IsRemembered = true;
-            this.IsEnabled = true;
+
         }
         #endregion
 
         #region Commands
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return new RelayCommand(Login);
-            }
-        }
+        //public ICommand LoginCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(Login)
+        //    }
+        //}
 
-        //Validacion del inicio de sesion
-        private async void Login()
-        {
-            if (string.IsNullOrEmpty(this.Email))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an Email",
-                    "Accept");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(this.Password))
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter a Password",
-                    "Accept");
-                return;
-            }
-
-            this.IsRunning = true;  //Habilitamos la accion de "Se esta ejecutando" para darle mayor visibilidad al usuario
-            this.IsEnabled = false; //Deshabilitamos los botones para que el usuario no pueda hacer nada
-
-            if (this.Email != "obrzz@gmail.com" || this.Password != "1234")
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true; //Habilitamos los botones para el usuario
-                await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Email or password incorrect",
-                    "Accept");
-                this.Password = string.Empty;
-                return;
-            }
-            
-            this.IsRunning = false;
-            this.IsEnabled = true; //Habilitamos los botones para el usuario
-            await Application.Current.MainPage.DisplayAlert(
-                    "Ok",
-                    "Good one",
-                    "Accept");
-            return;
-        }
-
-        public ICommand RegisterCommand
-        {
-            get;
-            set;
-        }
+        //public ICommand RegisterCommand
+        //{
+        //    get;
+        //    set;
+        //}
         #endregion 
     }
 }
