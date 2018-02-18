@@ -1,27 +1,36 @@
 ﻿namespace MyLands.ViewModels
 {
     using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
+    using Views;
+    using Xamarin.Forms;
 
-    public class LoginViewModel
+    public class LoginViewModel : BaseViewModel
     {
+        #region Attributes
+        private string email;
+        private string password;
+        private bool isRunning;
+        private bool isEnabled;
+        #endregion
 
         #region Properties
         public string Email
         {
-            get;
-            set;
+            get { return this.email; }
+            set { this.SetValue(ref this.email, value); }
         }
 
         public string Password
         {
-            get;
-            set;
+            get { return this.password; }
+            set { this.SetValue(ref this.password, value); }
         }
 
         public bool IsRunning
         {
-            get;
-            set;
+            get { return this.isRunning; }
+            set { this.SetValue(ref this.isRunning, value); }
         }
 
         public bool IsRemembered
@@ -29,30 +38,78 @@
             get;
             set;
         }
+
+        public bool IsEnabled
+        {
+            get { return this.isEnabled; }
+            set { this.SetValue(ref this.isEnabled, value); }
+        }
         #endregion
 
         #region Constructors
         public LoginViewModel()
         {
             this.IsRemembered = true;
+            this.IsEnabled = true;
 
+            this.Email = "obrzz@gmail.com";
+            this.Password = "1234";
         }
         #endregion
 
         #region Commands
-        //public ICommand LoginCommand
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(Login)
-        //    }
-        //}
+        public ICommand LoginCommand
+        {
+            get
+            {
+                return new RelayCommand(Login);
+            }
+        }
 
-        //public ICommand RegisterCommand
-        //{
-        //    get;
-        //    set;
-        //}
-        #endregion 
+        private async void Login()
+        {
+            if (string.IsNullOrEmpty(this.Email))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "You must to enter an email.",
+                    "Accept");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(this.Password))
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "You must to enter a password.",
+                    "Accept");
+                return;
+            }
+
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
+            if (this.Email != "obrzz@gmail.com" || this.Password != "1234")
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Email or password wrong.",
+                    "Accept");
+                this.Password = string.Empty;
+                return;
+            }
+
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            MainViewModel.GetInstance().Lands = new LandsViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
+
+            this.IsRunning = false;
+            this.IsEnabled = true;
+        }
+        #endregion
     }
 }

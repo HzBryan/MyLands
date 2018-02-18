@@ -1,67 +1,56 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="MyLands.Views.LoginPage"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
-    Title="Lands">
+    Title="Login">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
-            <StackLayout 
-                Padding="10,20">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="Login"
-                    TextColor="Black">                    
-                </Label>
+            <StackLayout
+                Padding="10">
                 <Image
-                    Aspect="AspectFit"
                     Source="onu"
-                    WidthRequest="200">
-                </Image>                
-                <Grid
-                    Margin="0,20">
+                    WidthRequest="150">
+                </Image>
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label 
-                        FontAttributes="Bold"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Email"
-                        TextColor="Black"                        
+                        Text="Email" 
+                        TextColor="Black"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Row="0"
                         Grid.Column="1"
                         Keyboard="Email"
-                        Placeholder="Enter your Email"
-                        Text="{Binding Email, Mode=TwoWay}">
+                        Text="{Binding Email, Mode=TwoWay}"
+                        Placeholder="Enter your email...">
                     </Entry>
                     <Label 
-                        FontAttributes="Bold"
                         Grid.Row="1"
                         Grid.Column="0"
+                        Text="Password" 
                         TextColor="Black"
-                        Text="Password"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Row="1"
                         Grid.Column="1"
-                        IsPassword="True"
-                        Placeholder="Enter your Password"
-                        Text="{Binding Password, Mode=TwoWay}">
+                        IsPassword="true"
+                        Text="{Binding Password, Mode=TwoWay}"
+                        Placeholder="Enter your password...">
                     </Entry>
-                </Grid>                
+                </Grid>
                 <ActivityIndicator
                     IsRunning="{Binding IsRunning, Mode=TwoWay}"
-                    VerticalOptions="CenterAndExpand">                    
+                    VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
                 <StackLayout
                     Orientation="Horizontal"
@@ -70,18 +59,18 @@
                         HorizontalOptions="StartAndExpand"
                         Text="Rememberme on this device"
                         TextColor="Black"
-                        VerticalOptions="Center">                        
+                        VerticalOptions="Center">
                     </Label>
                     <Switch
                         IsToggled="{Binding IsRemembered, Mode=TwoWay}"
-                        HorizontalOptions="End">                        
+                        HorizontalOptions="End">
                     </Switch>
                 </StackLayout>
                 <Label
                     HorizontalOptions="Center"
-                    Text="Forgot your Password?"
+                    Text="Forgot your password?"
                     TextColor="Blue"
-                    VerticalOptions="CenterAndExpand">                    
+                    VerticalOptions="CenterAndExpand">
                 </Label>
                 <Button
                     BackgroundColor="Navy"
@@ -89,19 +78,20 @@
                     Command="{Binding LoginCommand}"
                     FontAttributes="Bold"
                     HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     Margin="20,0"
                     Text="Login"
-                    TextColor="White">                    
+                    TextColor="White">
                 </Button>
                 <Button
                     BackgroundColor="Purple"
                     BorderRadius="23"
-                    Command="{Binding RegisterCommand}"
                     FontAttributes="Bold"
                     HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                     Margin="20,0"
                     Text="Register"
-                    TextColor="White">                    
+                    TextColor="White">
                 </Button>
                 <StackLayout
                     HorizontalOptions="Center"
@@ -109,7 +99,10 @@
                     VerticalOptions="EndAndExpand">
                     <Image
                         Source="facebook_logo"
-                        WidthRequest="80">                        
+                        WidthRequest="80">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="LoginFacebookCommand"/>
+                        </Image.GestureRecognizers>
                     </Image>
                     <Image
                         Source="instagram_logo"

@@ -6,15 +6,14 @@
     public partial class App : Application
 	{
         #region Constructors
-        public App()
+        public App ()
         {
             InitializeComponent();
 
             this.MainPage = new NavigationPage(new LoginPage());
         }
         #endregion
-
-
+        
         #region Methods
         protected override void OnStart()
         {
