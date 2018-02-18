@@ -1,65 +1,39 @@
 ﻿namespace MyLands.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
-    using System;
-    using System.ComponentModel;
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : BaseViewModel
     {
 
-        #region Events
-        public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
-
         #region Attributes
+        private string email;
         private string password;
         private bool isRunning;
         private bool isEnabled;
         #endregion
 
         #region Properties
+        //Inicialmente teniamos implementada la interfaz INotifyPropertyChanged aqui, pero para optimizar
+        //el codigo, creamos la BaseViewModel y heredamos la interfaz de ahi y hacemos la referencia propia
+        //para cada propiedad, para asi actualizar la vista
         public string Email
         {
-            get;
-            set;
+            get { return this.email; }
+            set { this.SetValue(ref this.email, value); }
         }
 
         public string Password
         {
-            get
-            {
-                return this.password;
-            }
-            set
-            {
-                if (this.password != value)
-                {
-                    this.password = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.Password)));
-                }
-            }
+            get { return this.password; }
+            set { this.SetValue(ref this.password, value); }
         }
 
         public bool IsRunning
         {
-            get
-            {
-                return this.isRunning;
-            }
-            set
-            {
-                if (this.isRunning != value)
-                {
-                    this.isRunning = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.IsRunning)));
-                }
-            }
+            get { return this.isRunning; }
+            set { this.SetValue(ref this.isRunning, value); }
         }
 
         public bool IsRemembered
@@ -70,20 +44,8 @@
 
         public bool IsEnabled
         {
-            get
-            {
-                return this.isEnabled;
-            }
-            set
-            {
-                if (this.isEnabled != value)
-                {
-                    this.isEnabled = value;
-                    PropertyChanged?.Invoke(
-                        this,
-                        new PropertyChangedEventArgs(nameof(this.IsEnabled)));
-                }
-            }
+            get { return this.isEnabled; }
+            set { this.SetValue(ref this.isEnabled, value); }
         }
         #endregion
 
