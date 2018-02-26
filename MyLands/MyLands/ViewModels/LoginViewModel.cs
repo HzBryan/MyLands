@@ -1,12 +1,18 @@
 ﻿namespace MyLands.ViewModels
 {
-    using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
-    using Views;
+    using Helpers;
+    using Services;
+    using System.Windows.Input;
     using Xamarin.Forms;
+    using Views;
 
     public class LoginViewModel : BaseViewModel
     {
+        #region Services
+        private ApiService apiService;
+        #endregion
+
         #region Attributes
         private string email;
         private string password;
@@ -71,9 +77,9 @@
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must to enter an email.",
-                    "Accept");
+                    Lenguages.Error,
+                    Lenguages.EmailValidation,
+                    Lenguages.Accept);
                 return;
             }
 
@@ -89,24 +95,53 @@
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            if (this.Email != "obrzz@gmail.com" || this.Password != "1234")
+            var connection = await this.apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Email or password wrong.",
+                    connection.Message,
                     "Accept");
-                this.Password = string.Empty;
                 return;
             }
 
-            this.Email = string.Empty;
-            this.Password = string.Empty;
+            var token = await this.apiService.GetToken(
+                "http://landsapi2.azurewebsites.net",
+                this.Email,
+                this.Password);
 
-            MainViewModel.GetInstance().Lands = new LandsViewModel();
+            if (token == null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "Something was wrong, please try later.",
+                    "Accept");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(token.AccessToken))
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    token.ErrorDescription,
+                    "Accept");
+                return;
+            }
+
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Token = token;
+            mainViewModel.Lands = new LandsViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
 
+            this.Email = string.Empty;
+            this.Password = string.Empty;
             this.IsRunning = false;
             this.IsEnabled = true;
         }
