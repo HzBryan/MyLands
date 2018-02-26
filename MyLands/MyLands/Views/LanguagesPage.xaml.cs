@@ -2,9 +2,9 @@
 {
     using Xamarin.Forms;
 
-    public partial class LandPage : ContentPage
+    public partial class LanguagesPage : ContentPage
 	{
-		public LandPage()
+		public LanguagesPage()
 		{
 			InitializeComponent();
 		}

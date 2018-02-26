@@ -17,8 +17,7 @@
         private ApiService apiService;
         #endregion
 
-        #region Attributes
-        private List<Land> landsList;
+        #region Attributes        
         //private ObservableCollection<Land> lands;
         private ObservableCollection<LandItemViewModel> lands;
         private bool isRefreshing;
@@ -101,7 +100,7 @@
             //para facilitar el proceso de busqueda, ya que la vamos consultar varias veces
             //y es necesario mantenerla en memoria.
             //var list = (List<Land>)response.Result;
-            this.landsList = (List<Land>)response.Result;                
+            MainViewModel.GetInstance().LandsList = (List<Land>)response.Result;                
             this.Lands = new ObservableCollection<LandItemViewModel>(
                     this.ToLandItemViewModel());    //Antes se cargaba asi la Lista this.Lands = new ObservableCollection<Land>(this.landsList);
             this.IsRefreshing = false;                  //pero al implementar <LandItemViewModel> fue necesario crear un metodo para llenar la nueva Lista
@@ -112,7 +111,7 @@
         private List<LandItemViewModel> ToLandItemViewModel()
         {
             //Con esta instruccion decimos que de landsList seleccione todo y cree un nuevo LandItemViewModel
-            return this.landsList.Select(l => new LandItemViewModel
+            return MainViewModel.GetInstance().LandsList.Select(l => new LandItemViewModel
             {
                 Alpha2Code = l.Alpha2Code,
                 Alpha3Code = l.Alpha3Code,
