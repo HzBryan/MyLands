@@ -55,11 +55,13 @@
         #region Constructors
         public LoginViewModel()
         {
+            this.apiService = new ApiService();    
+
             this.IsRemembered = true;
             this.IsEnabled = true;
 
-            this.Email = "obrzz@gmail.com";
-            this.Password = "1234";
+            this.Email = "b.renzz@gmail.com";
+            this.Password = "123456";
         }
         #endregion
 
@@ -77,18 +79,18 @@
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    Lenguages.Error,
-                    Lenguages.EmailValidation,
-                    Lenguages.Accept);
+                    Languages.Error,
+                    Languages.EmailValidation,
+                    Languages.Accept);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must to enter a password.",
-                    "Accept");
+                    Languages.Error,                //"Error",
+                    Languages.PasswordValidation,   //"You must to enter a password.",
+                    Languages.Accept);              //"Accept");
                 return;
             }
 
@@ -102,9 +104,9 @@
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
+                    Languages.Error,                //"Error",
                     connection.Message,
-                    "Accept");
+                    Languages.Accept);              //"Accept");
                 return;
             }
 
@@ -118,9 +120,9 @@
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "Something was wrong, please try later.",
-                    "Accept");
+                    Languages.Error,                //"Error",
+                    Languages.SomethingWrong,   //"Something was wrong, please try later.",
+                    Languages.Accept);              //"Accept");
                 return;
             }
 
@@ -129,9 +131,10 @@
                 this.IsRunning = false;
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
+                    Languages.Error,                //"Error",
                     token.ErrorDescription,
-                    "Accept");
+                    Languages.Accept);              //"Accept");
+                //this.Password = string.Empty;
                 return;
             }
 
@@ -140,10 +143,11 @@
             mainViewModel.Lands = new LandsViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
 
-            this.Email = string.Empty;
-            this.Password = string.Empty;
             this.IsRunning = false;
             this.IsEnabled = true;
+
+            this.Email = string.Empty;
+            this.Password = string.Empty;
         }
         #endregion
     }
