@@ -10,23 +10,22 @@
         <ScrollView
             BindingContext="{Binding Login}">
             <StackLayout
-                Padding="10">
+                Padding="5">
                 <Image
                     Source="onu"
-                    WidthRequest="150">
+                    WidthRequest="200">
                 </Image>
                 <Grid
                     Margin="10,0"
-                    VerticalOptions="CenterAndExpand">>
+                    VerticalOptions="CenterAndExpand">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label 
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="{i18n:Translate EMail}" 
-                        TextColor="Black"
+                        Text="{i18n:Translate EMail}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -36,11 +35,10 @@
                         Text="{Binding Email, Mode=TwoWay}"
                         Placeholder="{i18n:Translate EmailPlaceHolder}">
                     </Entry>
-                    <Label 
+                    <Label
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="{i18n:Translate Password}" 
-                        TextColor="Black"
+                        Text="{i18n:Translate Password}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -83,19 +81,18 @@
                         BackgroundColor="Navy"
                         BorderRadius="23"
                         Command="{Binding LoginCommand}"
-                        FontAttributes="Bold"
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
-                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"                       
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="{i18n:Translate Login}"
                         TextColor="White">
                     </Button>
                     <Button
                         BackgroundColor="Purple"
                         BorderRadius="23"
-                        FontAttributes="Bold"
                         HeightRequest="46"
-                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"                        
+                        HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         Text="{i18n:Translate Register}"
                         TextColor="White">
                     </Button>
@@ -106,18 +103,18 @@
                     VerticalOptions="EndAndExpand">
                     <Image
                         Source="facebook_logo"
-                        WidthRequest="80">
+                        WidthRequest="100">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="LoginFacebookCommand"/>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookComand}"/>
                         </Image.GestureRecognizers>
                     </Image>
                     <Image
-                        Source="instagram_logo"
-                        WidthRequest="65">
+                        Source="twitter_logo"
+                        WidthRequest="100">
                     </Image>
                     <Image
-                        Source="twitter_logo"
-                        WidthRequest="80">
+                        Source="instagram_logo"
+                        WidthRequest="85">
                     </Image>
                 </StackLayout>
             </StackLayout>
