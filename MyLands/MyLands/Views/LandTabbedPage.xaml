@@ -5,7 +5,7 @@
     xmlns:i18n="clr-namespace:MyLands.Helpers"
     xmlns:tabs="clr-namespace:MyLands.Views"
     x:Class="MyLands.Views.LandTabbedPage"
-    Title="Land">
+    Title="{i18n:Translate Country}">
     <TabbedPage.Children>
         <tabs:LandPage/>
         <tabs:BordersPage/>

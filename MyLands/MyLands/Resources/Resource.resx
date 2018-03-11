@@ -135,11 +135,29 @@
   <data name="Brazilian" xml:space="preserve">
     <value>Brazilian:</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Capital" xml:space="preserve">
     <value>Capital:</value>
   </data>
+  <data name="ChangeImage" xml:space="preserve">
+    <value>Touch the image to chage it</value>
+  </data>
   <data name="CIOC" xml:space="preserve">
     <value>CIOC:</value>
+  </data>
+  <data name="ConfirmLabel" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmPlaceHolder" xml:space="preserve">
+    <value>Enter the password confirm...</value>
+  </data>
+  <data name="ConfirmValidation" xml:space="preserve">
+    <value>You must enter a confirm.</value>
+  </data>
+  <data name="ConfirmValidation2" xml:space="preserve">
+    <value>The password and confirm does not match.</value>
   </data>
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
@@ -168,14 +186,32 @@
   <data name="EmailValidation" xml:space="preserve">
     <value>You must enter an email.</value>
   </data>
+  <data name="EmailValidation2" xml:space="preserve">
+    <value>You must enter a valid email.</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="FirstNameLabel" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FirstNamePlaceHolder" xml:space="preserve">
+    <value>Enter the first name...</value>
+  </data>
+  <data name="FirstNameValidation" xml:space="preserve">
+    <value>You must enter a first name.</value>
   </data>
   <data name="Forgot" xml:space="preserve">
     <value>Forgot your password?</value>
   </data>
   <data name="French" xml:space="preserve">
     <value>French:</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>From camera</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>From gallery</value>
   </data>
   <data name="German" xml:space="preserve">
     <value>German:</value>
@@ -192,11 +228,29 @@
   <data name="Japanese" xml:space="preserve">
     <value>Japanese:</value>
   </data>
+  <data name="LastNameLabel" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LastNamePlaceHolder" xml:space="preserve">
+    <value>Enter the last name...</value>
+  </data>
+  <data name="LastNameValidation" xml:space="preserve">
+    <value>You must enter a last name.</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
   <data name="MyLanguages" xml:space="preserve">
     <value>Languages</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My Profile</value>
   </data>
   <data name="NativeName" xml:space="preserve">
     <value>Native Name:</value>
@@ -213,8 +267,20 @@
   <data name="PasswordValidation" xml:space="preserve">
     <value>You must enter a password.</value>
   </data>
+  <data name="PasswordValidation2" xml:space="preserve">
+    <value>The password must have at least seix (6) characters.</value>
+  </data>
   <data name="Persian" xml:space="preserve">
     <value>Persian:</value>
+  </data>
+  <data name="PhoneLabel" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PhonePlaceHolder" xml:space="preserve">
+    <value>Enter the phone...</value>
+  </data>
+  <data name="PhoneValidation" xml:space="preserve">
+    <value>You must enter a phone.</value>
   </data>
   <data name="Population" xml:space="preserve">
     <value>Population:</value>
@@ -228,6 +294,9 @@
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="RegisterTitle" xml:space="preserve">
+    <value>Register a new user</value>
+  </data>
   <data name="Rememberme" xml:space="preserve">
     <value>Rememberme in this device</value>
   </data>
@@ -237,13 +306,22 @@
   <data name="SomethingWrong" xml:space="preserve">
     <value>Something was wrong, please try later.</value>
   </data>
+  <data name="SourceImageQuestion" xml:space="preserve">
+    <value>Where do you want to take the image?</value>
+  </data>
   <data name="Spanish" xml:space="preserve">
     <value>Spanish:</value>
+  </data>
+  <data name="Statics" xml:space="preserve">
+    <value>Statics</value>
   </data>
   <data name="Subregion" xml:space="preserve">
     <value>Subregion:</value>
   </data>
   <data name="Translations" xml:space="preserve">
     <value>Translations</value>
+  </data>
+  <data name="UserRegisteredMessage" xml:space="preserve">
+    <value>The user was create, now you can login with this email and password.</value>
   </data>
 </root>

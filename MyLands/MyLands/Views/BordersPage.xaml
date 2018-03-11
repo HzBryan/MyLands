@@ -6,7 +6,7 @@
     x:Class="MyLands.Views.BordersPage"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     Icon="ic_action_language"
-    Title="Borders">
+    Title="{i18n:Translate Borders}">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Land}"

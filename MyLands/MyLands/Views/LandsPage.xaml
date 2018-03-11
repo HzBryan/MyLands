@@ -8,7 +8,8 @@
     xmlns:i18n="clr-namespace:MyLands.Helpers"
     x:Class="MyLands.Views.LandsPage"
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
-    Title="Lands">
+    BackgroundColor="Silver"
+    Title="{i18n:Translate Countries}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ffimageloadingsvg:SvgImageSourceConverter 
@@ -20,7 +21,7 @@
             BindingContext="{Binding Lands}">
             <SearchBar
                 BackgroundColor="Silver"
-                Placeholder="Search..."
+                Placeholder="{i18n:Translate Search}"
                 Text="{Binding Filter, Mode=TwoWay}"
                 SearchCommand="{Binding SearchCommand}">
             </SearchBar>

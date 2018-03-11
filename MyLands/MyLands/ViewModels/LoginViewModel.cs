@@ -60,7 +60,7 @@
             this.IsRemembered = true;
             this.IsEnabled = true;
 
-            this.Email = "b.renzz@gmail.com";
+            this.Email = "b.renzz@hotmail.com";
             this.Password = "123456";
         }
         #endregion
@@ -141,7 +141,9 @@
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
             mainViewModel.Lands = new LandsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
+            
+            Application.Current.MainPage = new MasterPage(); //Nueva forma de navegar, para que no se devuelva al login, solo puede darle LogOut
+            //await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
 
             this.IsRunning = false;
             this.IsEnabled = true;

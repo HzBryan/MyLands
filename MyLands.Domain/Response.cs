@@ -1,4 +1,4 @@
-﻿namespace MyLands.Models
+﻿namespace MyLands.Domain
 {
     public class Response
     {
