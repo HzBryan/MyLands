@@ -29,11 +29,12 @@
         {
             if (this.PageName == "LoginPage")
             {
-                //Settings.Token = string.Empty;
-                //Settings.TokenType = string.Empty;
-                //var mainViewModel = MainViewModel.GetInstance();
-                //mainViewModel.Token = string.Empty;
-                //mainViewModel.TokenType = string.Empty;
+                Settings.Token = string.Empty; //Cuando el usuario cierre sesion, limpiamos la persistencia
+                Settings.TokenType = string.Empty; //Cuando el usuario cierre sesion, limpiamos la persistencia
+
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Token = string.Empty;
+                mainViewModel.TokenType = string.Empty;
                 Application.Current.MainPage = new NavigationPage(
                     new LoginPage());
             }

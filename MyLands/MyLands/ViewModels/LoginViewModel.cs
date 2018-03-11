@@ -134,14 +134,21 @@
                     Languages.Error,                //"Error",
                     token.ErrorDescription,
                     Languages.Accept);              //"Accept");
-                //this.Password = string.Empty;
+                this.Password = string.Empty;
                 return;
             }
 
             var mainViewModel = MainViewModel.GetInstance();
-            mainViewModel.Token = token;
-            mainViewModel.Lands = new LandsViewModel();
+            mainViewModel.Token = token.AccessToken;
+            mainViewModel.TokenType = token.TokenType;
+
+            if (this.IsRemembered)
+            {
+                Settings.Token = token.AccessToken; //Con esto no solo lo guardamos en memoria, si no tambien en Settings, para tenerlo en persistencia en disco
+                Settings.TokenType = token.TokenType;
+            }
             
+            mainViewModel.Lands = new LandsViewModel();            
             Application.Current.MainPage = new MasterPage(); //Nueva forma de navegar, para que no se devuelva al login, solo puede darle LogOut
             //await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
 
