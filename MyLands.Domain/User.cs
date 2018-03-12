@@ -32,13 +32,7 @@
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 
-        public int UserTypeId { get; set; }
-
-        [NotMapped]
-        public byte[] ImageArray { get; set; }
-
-        //[NotMapped]
-        //public string Password { get; set; }
+        public int? UserTypeId { get; set; } //Temporalmente lo pusimos asi public int? UserTypeId { get; set; }, para que el pemita null en ese campo
 
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
@@ -58,6 +52,12 @@
                     ImagePath.Substring(1));
             }
         }
+
+        //[NotMapped]
+        //public byte[] ImageArray { get; set; }
+
+        //[NotMapped]
+        //public string Password { get; set; }
 
         [Display(Name = "User")]
         public string FullName
